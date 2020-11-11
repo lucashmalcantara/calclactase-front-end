@@ -1,17 +1,50 @@
-import React, { useState } from 'react';
-import { Container, Header, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import React, { useState, useEffect } from 'react';
+import { Container, Header, Content, Footer, FooterTab, Button, Icon, Toast, Text } from 'native-base';
 import { StyleSheet } from 'react-native';
-import NavBar from './components/NavBar';
+import NavBar from './src/components/NavBar';
+import Products from './src/components/Products';
+import ProductRepository from './src/repositories/ProductRepository'
 
 export default function App() {
   const [campo, setCampo] = useState('');
   const [altera, setAltera] = useState('');
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function recuperaDados() {
+      try {
+        // const t = await AsyncStorage.getItem('tarefas');
+        // if (t !== null) setTarefas(JSON.parse(t));
+      } catch (error) {
+        Alert.alert('As tarefas não foram carregadas');
+      }
+    }
+
+    recuperaDados();
+    setProducts(ProductRepository.getAll());
+  }, []);
+
+  const addToCart = (t) => {
+    Toast.show({
+      text: 'Produto adicionado a sacola!',
+      position: 'bottom',
+    });
+  };
+
+  const removeFromCart = (id, d) => {
+    Toast.show({
+      text: 'Produto excluido da sacola!',
+      position: 'bottom',
+    });
+  };
 
   return (
     <Container>
-      <NavBar cartItemCount={0}/>
-      <Content />
+      <NavBar cartItemCount={0} />
+      <Content>
+        <Products productList={products}/>
+      </Content>
       <Footer>
         <FooterTab>
           <Button active>
