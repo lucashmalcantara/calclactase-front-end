@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { H1, List, Text } from 'native-base';
+import { H1, List } from 'native-base';
 import Product from './Product'
 
 export default function Products(props) {
   return (
     <React.Fragment>
-      <H1 style={estilos.titulo1}>Produtos</H1>
+      <H1 style={estilos.listTitle}>Produtos</H1>
       <List>
         {props.productList.map((product) => (
           <Product
@@ -25,7 +25,7 @@ export default function Products(props) {
 }
 
 const estilos = StyleSheet.create({
-  titulo1: {
+  listTitle: {
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 30,

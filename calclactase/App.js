@@ -3,7 +3,8 @@ import { Container, Header, Content, Footer, FooterTab, Button, Icon, Toast, Tex
 import { StyleSheet } from 'react-native';
 import NavBar from './src/components/NavBar';
 import Products from './src/components/Products';
-import ProductRepository from './src/repositories/ProductRepository'
+import ProductRepository from './src/repositories/ProductRepository';
+import Calculator from './src/components/Calculator'
 
 export default function App() {
   const [campo, setCampo] = useState('');
@@ -44,6 +45,7 @@ export default function App() {
       <NavBar cartItemCount={0} />
       <Content>
         <Products productList={products}/>
+        {/* <Calculator calculatorItemList={products}/> */}
       </Content>
       <Footer>
         <FooterTab>
