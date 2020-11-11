@@ -1,13 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Container, Header, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import { StyleSheet } from 'react-native';
+import NavBar from './components/NavBar';
 
 export default function App() {
+  const [campo, setCampo] = useState('');
+  const [altera, setAltera] = useState('');
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Container>
+      <NavBar cartItemCount={0}/>
+      <Content />
+      <Footer>
+        <FooterTab>
+          <Button active>
+            <Icon active name="home" />
+          </Button>
+          <Button>
+            <Icon name="calculator" />
+          </Button>
+          <Button>
+            <Icon name="settings" />
+          </Button>
+        </FooterTab>
+      </Footer>
+    </Container>
   );
 }
 
