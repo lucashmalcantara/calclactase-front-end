@@ -21,7 +21,7 @@ import {
 
 import styles from "./styles";
 
-export default function Configuration(props) {
+export default function Settings(props) {
   return (
     <React.Fragment>
       <H1 style={styles.largeTitle}>Configurações</H1>

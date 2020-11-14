@@ -1,6 +1,7 @@
 const colors = {
-    header: '#333333',
-    primary: '#069',
-  };
-  
-  export default colors;
+  header: "#333333",
+  primary: "#069",
+  background: "#fff",
+};
+
+export default colors;
