@@ -1,15 +1,19 @@
 import ProductBusiness from "./ProductBusiness";
 
-const items = [];
+let items = [];
 
 export default class CalculatorBusiness {
   static getAll() {
     return items;
   }
 
+  static GetItemCount = () => {
+    return items.length;
+  };
+
   static Add = (productId) => {
-    console.log("Adicionando produto a calculadora: ", productId);
     const itemIndex = this.findIndexByItemId(productId);
+    console.log("Quantidade de itens: ", items.length);
 
     if (itemIndex >= 0) {
       items[itemIndex].quantity += 1;
@@ -26,7 +30,6 @@ export default class CalculatorBusiness {
     items.push(item);
   };
 
-  static findIndexByItemId = (productId) => {
+  static findIndexByItemId = (productId) =>
     items.findIndex((i) => i.product.id === productId);
-  };
 }

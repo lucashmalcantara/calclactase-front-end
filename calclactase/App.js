@@ -28,18 +28,12 @@ export default function App() {
 
   const [selectedScreen, setSelectedScreen] = useState(homeTag);
 
+  const [itemCount, setItemCount] = useState(0);
+
   const [campo, setCampo] = useState("");
   const [altera, setAltera] = useState("");
 
   const [products, setProducts] = useState([]);
-
-  useEffect(async () => {
-    await Expo.Font.loadAsync({
-      Roboto: require("native-base/Fonts/Roboto.ttf"),
-      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
-    });
-  }, []);
 
   useEffect(() => {
     async function recuperaDados() {
@@ -62,12 +56,13 @@ export default function App() {
     });
 
     CalculatorBusiness.Add(productId);
+    setItemCount(CalculatorBusiness.GetItemCount());
   };
 
   return (
     <Root>
       <Container>
-        <NavBar itemCount={0} />
+        <NavBar itemCount={itemCount} />
         <Content padder>
           {selectedScreen === homeTag && (
             <Products productList={products} onAdd={addToCalculator} />
