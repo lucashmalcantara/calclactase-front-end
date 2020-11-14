@@ -16,6 +16,7 @@ export default function Products(props) {
             name={product.name}
             displayUnitValue={product.displayUnitValue}
             displayUnit={product.displayUnit}
+            imageUrl={product.imageUrl}
             onAdd={props.onAdd}
             onRemove={props.onRemove}
           />

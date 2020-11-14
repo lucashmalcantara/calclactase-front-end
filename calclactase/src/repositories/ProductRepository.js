@@ -7,7 +7,7 @@ const products = [
         displayUnitValue: 100,
         grams: 104,
         percentageOfLactose: 0.046,
-        imageUrl: "../assets/images/products/milk.jpg",
+        imageUrl: "../../assets/images/products/milk.jpg",
         references: [
             {
                 name: "Valores Lactase",
@@ -26,7 +26,7 @@ const products = [
         displayUnitValue: 100,
         grams: 100,
         percentageOfLactose: 0.529,
-        imageUrl: "../assets/images/products/powdered-milk.jpeg",
+        imageUrl: "../../assets/images/products/powdered-milk.jpeg",
         references: [
             {
                 name: "Valores Lactase",
@@ -41,7 +41,7 @@ const products = [
         displayUnitValue: 1,
         grams: 100,
         percentageOfLactose: 0.047,
-        imageUrl: "../assets/images/products/chocolate-ice-cream.jpg",
+        imageUrl: "../../assets/images/products/chocolate-ice-cream.jpg",
         references: [
             {
                 name: "Valores Lactase",
@@ -56,7 +56,7 @@ const products = [
         displayUnitValue: 100,
         grams: 100,
         percentageOfLactose: 0.03,
-        imageUrl: "../assets/images/products/mozzarella.jpg",
+        imageUrl: "../../assets/images/products/mozzarella.jpg",
         references: [
             {
                 name: "Valores Lactase",
@@ -71,7 +71,7 @@ const products = [
         displayUnitValue: 500,
         grams: 408,
         percentageOfLactose: 0.045,
-        imageUrl: "../assets/images/products/milkshake.jpg",
+        imageUrl: "../../assets/images/products/milkshake.jpg",
         references: [
             {
                 name: "Valores Lactase",
@@ -90,7 +90,7 @@ const products = [
         displayUnitValue: 100,
         grams: 100,
         percentageOfLactose: 0.147,
-        imageUrl: "../assets/images/products/condensed-milk.jpg",
+        imageUrl: "../../assets/images/products/condensed-milk.jpg",
         references: [
             {
                 name: "Valores Lactase",
