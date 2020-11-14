@@ -15,6 +15,7 @@ import { StyleSheet } from "react-native";
 import NavBar from "./src/components/NavBar";
 import Products from "./src/components/Products";
 import ProductRepository from "./src/repositories/ProductRepository";
+import CalculatorItemRepository from "./src/repositories/CalculatorItemRepository";
 import Calculator from "./src/components/Calculator";
 import Settings from "./src/components/Settings";
 import { general } from "./src/styles";
@@ -65,7 +66,9 @@ export default function App() {
         <Content padder>
           {selectedScreen === homeTag && <Products productList={products} />}
           {selectedScreen === calculatorTag && (
-            <Calculator calculatorItemList={products} />
+            <Calculator
+              calculatorItemList={CalculatorItemRepository.getAll()}
+            />
           )}
           {selectedScreen === settingsTag && <Settings />}
         </Content>
