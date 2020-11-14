@@ -74,9 +74,7 @@ Para a escolha dos fundos degradês, foi usado o site [CSS Gradient](https://css
 
 ## Técnicas
 
-[Writing Modular JavaScript — Pt 1](https://medium.com/@jrschwane/writing-modular-javascript-pt-1-b42a3bd23685)
-
-[Snackbar / Toast](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_snackbar)
+[Como organizar estilos no React Native](https://blog.rocketseat.com.br/como-organizar-estilos-no-react-native/)
 
 
 ## Saúde
@@ -99,9 +97,3 @@ Para a escolha dos fundos degradês, foi usado o site [CSS Gradient](https://css
 
 
 # CRÉDITOS
-
-## Ícones
-
-<div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
-
-<div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>

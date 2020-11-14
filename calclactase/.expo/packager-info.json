@@ -1,10 +1,10 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://9n-c3m.anonymous.calclactase.exp.direct",
-  "packagerNgrokUrl": "https://packager.9n-c3m.anonymous.calclactase.exp.direct",
-  "ngrokPid": 19732,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "packagerPort": 19001,
-  "packagerPid": 21176,
+  "packagerPid": 2680,
   "webpackServerPort": null,
   "devToolsPort": 19002
 }

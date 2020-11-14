@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { StyleSheet } from 'react-native';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Text, Badge, Thumbnail } from 'native-base';
 import { Image } from 'react-native';
-import Logo from '../assets/images/logo-calclactase.png';
+import Logo from '../../assets/images/logo-calclactase.png';
+import styles from './styles';
 
 export default function NavBar({ cartItemCount }) {
     return (
@@ -20,16 +20,3 @@ export default function NavBar({ cartItemCount }) {
         </Header>
     );
 }
-
-const styles = StyleSheet.create({
-    leftArea: {
-        flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    logo: {
-        flex: 1,
-        height: 40,
-        resizeMode: 'contain',
-    }
-});
