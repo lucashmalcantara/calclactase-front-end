@@ -23,7 +23,7 @@ export default function Product(props) {
         </Text>
       </View>
       <View style={{ flexDirection: "column", alignItems: "center" }}>
-        <Image style={styles.tinyProductImage} source={Teste} />
+        <Image style={styles.tinyProductImage} source={props.imageUrl} />
         <Button
           small
           info
