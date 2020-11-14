@@ -64,10 +64,10 @@ export default function App() {
   }, []);
 
   const addToCalculator = (productId) => {
+    const product = ProductBusiness.getById(productId);
     Toast.show({
-      text: "Produto adicionado a calculadora! ID: " + productId,
+      text: `${product.name} adicionado a calculadora.`,
       position: "bottom",
-      duration: 2500,
     });
 
     CalculatorBusiness.Add(productId);
