@@ -66,9 +66,7 @@ export default function App() {
         <Content padder>
           {selectedScreen === homeTag && <Products productList={products} />}
           {selectedScreen === calculatorTag && (
-            <Calculator
-              calculatorItemList={CalculatorItemRepository.getAll()}
-            />
+            <Calculator items={CalculatorItemRepository.getAll()} />
           )}
           {selectedScreen === settingsTag && <Settings />}
         </Content>

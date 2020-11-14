@@ -107,6 +107,7 @@ export default class ProductRepository {
   }
 
   static getById(id) {
+    console.log("Produto: ", products.find((p) => p.id === id));
     return products.find((p) => p.id === id);
   }
 }
