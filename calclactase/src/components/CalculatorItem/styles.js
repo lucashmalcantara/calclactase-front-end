@@ -15,11 +15,9 @@ const styles = StyleSheet.create({
     textAlign: "left",
     alignSelf: "flex-start",
   },
-  input: {
-    backgroundColor: "#EAEAEA",
-    height: 30,
-    width: 40,
-    marginLeft: 5,
+  quantityInput: {
+    textAlign: 'center',
+    margin: -5,
   },
   button: {
     marginLeft: 5,

@@ -16,6 +16,7 @@ export default function Calculator(props) {
             name={item.product.name}
             displayUnitValue={item.product.displayUnitValue}
             displayUnit={item.product.displayUnit}
+            quantity={item.quantity}
             imageUrl={item.product.imageUrl}
             onAdd={props.onAdd}
             onRemove={props.onRemove}

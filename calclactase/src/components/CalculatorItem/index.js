@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Image } from "react-native";
-import { ListItem, Button, Icon, Text, Input, Content } from "native-base";
+import {
+  ListItem,
+  Button,
+  Icon,
+  Text,
+  Input,
+  Content,
+  Label,
+  Item,
+} from "native-base";
 import styles from "./styles";
 
 export default function CalculatorItem(props) {
@@ -14,12 +23,16 @@ export default function CalculatorItem(props) {
       </View>
       <View style={{ flexDirection: "column", alignItems: "center" }}>
         <Image style={styles.tinyProductImage} source={props.imageUrl} />
+        <Item>
+          <Input disabled={true} value={props.quantity.toString()} style={styles.quantityInput} />
+        </Item>
+
         <View style={{ flexDirection: "row" }}>
           <Button
             small
             danger
             style={styles.button}
-            onPress={() => props.onAdd(props.id)}
+            onPress={() => props.onRemove(props.id)}
           >
             <Icon name="remove" />
           </Button>
