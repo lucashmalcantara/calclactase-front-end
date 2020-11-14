@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   tinyProductImage: {
-    height: 60,
-    width: 60,
+    height: 70,
+    width: 70,
     resizeMode: "contain",
   },
 });
