@@ -27,7 +27,6 @@ export default class CalculatorBusiness {
       quantity: 1,
     };
 
-    // items = [...items, item]
     items.push(item);
   };
 
@@ -38,11 +37,12 @@ export default class CalculatorBusiness {
 
   static removeQuantity = (id) => {
     const item = this.findById(id);
+    item.quantity -= 1;
+    
     if (item.quantity === 0) {
+      this.deleteById(id);
       return;
     }
-
-    item.quantity -= 1;
   };
 
   static findById = (id) => items.find((i) => i.id === id);
@@ -51,4 +51,8 @@ export default class CalculatorBusiness {
 
   static findIndexByProductId = (productId) =>
     items.findIndex((i) => i.product.id === productId);
+
+  static deleteById = (id) => {
+    items = items.filter(i => i.id !== id);
+  }
 }
