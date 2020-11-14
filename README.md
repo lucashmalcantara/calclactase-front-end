@@ -57,7 +57,7 @@ Nesta aplicação, os dados do usuário que são armazenados são:
 - A aplicação armazena e usa de forma relevante dados complexos do usuário? **Sim.**
 - A aplicação possui um manifesto para instalação no dispositivo do usuário? **Sim.**
 - A aplicação possui um _service worker_ que permite o funcionamento off-line? **Sim.**
-- O código da minha aplicação possui comentários explicando cada operação? **Não, pois não é uma boa prática de programação.** Todavia, todos os métodos, variáveis e arquivos foram criados com nomes extremamente sugestivos para simplificar o entendimento do código. Por exemplo, o método `addToCart` adiciona um produto à sacola; o método `showCartItens` exibe os itens da sacola; já o método `showCalcLactaseResult` exibe o resultado do cálculo. Viu?! Simples assim! Desta forma o código fica mais elegante e muito mais legível.
+- O código da minha aplicação possui comentários explicando cada operação? **Não, pois não é uma boa prática de programação.** Todavia, todos os métodos, variáveis e arquivos foram criados com nomes extremamente sugestivos para simplificar o entendimento do código. Por exemplo, o método `addToCalculator` adiciona um produto à sacola; o método `showCartItens` exibe os itens da sacola; já o método `showCalcLactaseResult` exibe o resultado do cálculo. Viu?! Simples assim! Desta forma o código fica mais elegante e muito mais legível.
 - A aplicação está funcionando corretamente? **Sim.**
 - A aplicação está completa? **Sim.**
 

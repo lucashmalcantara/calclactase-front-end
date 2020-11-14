@@ -101,13 +101,12 @@ const products = [
   },
 ];
 
-export default class ProductRepository {
+export default class ProductBusiness {
   static getAll() {
     return products;
   }
 
   static getById(id) {
-    console.log("Produto: ", products.find((p) => p.id === id));
     return products.find((p) => p.id === id);
   }
 }

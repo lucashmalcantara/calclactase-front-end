@@ -5,7 +5,7 @@ import { Image } from 'react-native';
 import Logo from '../../assets/images/logo-calclactase.png';
 import styles from './styles';
 
-export default function NavBar({ cartItemCount }) {
+export default function NavBar({ itemCount }) {
     return (
         <Header>
             <Left style={styles.leftArea}>
@@ -14,7 +14,7 @@ export default function NavBar({ cartItemCount }) {
             </Left>
             <Right >
                 <Badge info >
-                    <Text>{cartItemCount}</Text>
+                    <Text>{itemCount}</Text>
                 </Badge>
             </Right>
         </Header>

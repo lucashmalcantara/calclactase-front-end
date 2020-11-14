@@ -14,8 +14,8 @@ import {
 import { StyleSheet } from "react-native";
 import NavBar from "./src/components/NavBar";
 import Products from "./src/components/Products";
-import ProductRepository from "./src/repositories/ProductRepository";
-import CalculatorItemRepository from "./src/repositories/CalculatorItemRepository";
+import ProductBusiness from "./src/business/ProductBusiness";
+import CalculatorBusiness from "./src/business/CalculatorBusiness";
 import Calculator from "./src/components/Calculator";
 import Settings from "./src/components/Settings";
 import { general } from "./src/styles";
@@ -33,6 +33,14 @@ export default function App() {
 
   const [products, setProducts] = useState([]);
 
+  useEffect(async () => {
+    await Expo.Font.loadAsync({
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+    });
+  }, []);
+
   useEffect(() => {
     async function recuperaDados() {
       try {
@@ -44,29 +52,28 @@ export default function App() {
     }
 
     recuperaDados();
-    setProducts(ProductRepository.getAll());
+    setProducts(ProductBusiness.getAll());
   }, []);
 
-  const addToCart = () => {
-    console.log("foi...");
-  };
-
-  const removeFromCart = (id, d) => {
-    styles.container;
+  const addToCalculator = (productId) => {
     Toast.show({
-      text: "Produto excluido da sacola!",
+      text: "Produto adicionado a calculadora! ID: " + productId,
       position: "bottom",
     });
+
+    CalculatorBusiness.Add(productId);
   };
 
   return (
     <Root>
       <Container>
-        <NavBar cartItemCount={0} />
+        <NavBar itemCount={0} />
         <Content padder>
-          {selectedScreen === homeTag && <Products productList={products} />}
+          {selectedScreen === homeTag && (
+            <Products productList={products} onAdd={addToCalculator} />
+          )}
           {selectedScreen === calculatorTag && (
-            <Calculator items={CalculatorItemRepository.getAll()} />
+            <Calculator items={CalculatorBusiness.getAll()} />
           )}
           {selectedScreen === settingsTag && <Settings />}
         </Content>
@@ -76,19 +83,31 @@ export default function App() {
               active={selectedScreen === homeTag}
               onPress={() => setSelectedScreen(homeTag)}
             >
-              <Icon active name="home" />
+              <Icon
+                active={selectedScreen === homeTag}
+                type="FontAwesome"
+                name="home"
+              />
             </Button>
             <Button
               active={selectedScreen === calculatorTag}
               onPress={() => setSelectedScreen(calculatorTag)}
             >
-              <Icon name="calculator" />
+              <Icon
+                active={selectedScreen === calculatorTag}
+                type="FontAwesome"
+                name="calculator"
+              />
             </Button>
             <Button
               active={selectedScreen === settingsTag}
               onPress={() => setSelectedScreen(settingsTag)}
             >
-              <Icon name="settings" />
+              <Icon
+                active={selectedScreen === settingsTag}
+                type="FontAwesome"
+                name="cog"
+              />
             </Button>
           </FooterTab>
         </Footer>
