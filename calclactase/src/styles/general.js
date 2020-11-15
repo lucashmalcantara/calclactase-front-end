@@ -1,6 +1,6 @@
-import metrics from './metrics';
-import colors from './colors';
-import fonts from './fonts';
+import metrics from "./metrics";
+import colors from "./colors";
+import fonts from "./fonts";
 
 const general = {
   container: {
@@ -14,14 +14,19 @@ const general = {
   },
   sectionTitle: {
     color: colors.text,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: fonts.regular,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginBottom: metrics.doubleBaseMargin,
   },
-  baseTopMargin:{
-    marginTop: metrics.doubleTopMargin,
-    backgroundColor: 'blue'
+  baseMargin: {
+    margin: metrics.baseMargin,
+  },
+  baseMarginTop: {
+    marginTop: metrics.baseMargin,
+  },
+  baseDoubleMarginTop: {
+    marginTop: metrics.doubleBaseMargin,
   },
   largeTitle: {
     fontSize: 30,
@@ -30,7 +35,7 @@ const general = {
     marginBottom: 15,
     textAlign: "center",
     flex: 0,
-  }
+  },
 };
 
 export default general;

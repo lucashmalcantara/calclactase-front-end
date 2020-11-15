@@ -17,17 +17,51 @@ import {
   Left,
   Right,
   Button,
+  Toast,
 } from "native-base";
-
 import styles from "./styles";
+import appTexts from '../../shared/AppTexts';
+import appSettings from '../../shared/AppSettings'
 
 export default function Settings(props) {
-  const [selectedMedicineType, setSelectedMedicineType] = useState(undefined);
+  const [medicineTypeId, setMedicineTypeId] = useState(undefined);
+  const [medicineFcc, setMedicineFcc] = useState("");
 
   onMedicineTypeChange = (medicineTypeId) => {
     console.log("ID do tipo de medicamento selecionado: ", medicineTypeId);
-    setSelectedMedicineType(medicineTypeId);
+    setMedicineTypeId(medicineTypeId);
   };
+
+  onMedicineFccChange = (medicineFccText) => {
+    console.log("FCC digitado: ", medicineFccText);
+    setMedicineFcc(medicineFccText.replace(/[^0-9]/g, ""));
+  };
+
+  onSave = () => {
+    if (medicineFcc === "") {
+      Toast.show({
+        text: `Digite um valor para a Medida em FCC`,
+        position: appSettings.defaultToastPosition,
+        type: "danger",
+        buttonText: appTexts.ok,
+      });
+      return;
+    }
+
+    props.onSave({
+      medicineTypeId: medicineTypeId,
+      medicineFcc: Number.parseFloat(medicineFcc),
+    });
+  };
+
+  setDefaultMedicineFcc = () => {
+    console.log(">>> setDefaultMedicineFcc");
+    const selectedMedicineType = getSelectedMedicineType();
+    setMedicineFcc(selectedMedicineType.exampleFccValue);
+  };
+
+  getSelectedMedicineType = () =>
+    props.medicineTypes.find((m) => m.id === medicineTypeId);
 
   return (
     <React.Fragment>
@@ -41,7 +75,7 @@ export default function Settings(props) {
             placeholder="Selecione o tipo de medicamento"
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
-            selectedValue={selectedMedicineType}
+            selectedValue={medicineTypeId}
             onValueChange={onMedicineTypeChange.bind(this)}
           >
             {props.medicineTypes.map((m) => (
@@ -51,11 +85,20 @@ export default function Settings(props) {
         </Item>
         <Item floatingLabel>
           <Label>Medida em FCC</Label>
-          <Input keyboardType="numeric" />
+          <Input
+            keyboardType="numeric"
+            onChangeText={(inputText) => onMedicineFccChange(inputText)}
+            value={medicineFcc}
+          />
+        </Item>
+        <Item style={styles.saveSettingsButtonContainer}>
+          <Button onPress={onSave}>
+            <Text>SALVAR</Text>
+          </Button>
         </Item>
       </Form>
 
-      <Card style={styles.baseTopMargin}>
+      <Card style={styles.baseDoubleMarginTop}>
         <CardItem header bordered>
           <Text>Exemplos de medicamentos</Text>
         </CardItem>

@@ -23,6 +23,7 @@ import { general } from "./src/styles";
 import CalculatorItem from "./src/components/CalculatorItem";
 import * as Font from "expo-font";
 import SettingsBusiness from "./src/business/SettingsBusiness";
+import appSettings from "./src/shared/AppSettings";
 
 export default function App() {
   const homeTag = "home";
@@ -65,7 +66,7 @@ export default function App() {
     const product = ProductBusiness.getById(productId);
     Toast.show({
       text: `${product.name} adicionado a calculadora.`,
-      position: "bottom",
+      position: appSettings.defaultToastPosition,
     });
 
     CalculatorBusiness.Add(productId);
@@ -82,8 +83,13 @@ export default function App() {
     setCalculatorItems([...CalculatorBusiness.getAll()]);
   };
 
-  const saveUserSettings = (userSettings) => {
-
+  const saveUserSettings = async (userSettings) => {
+    console.log(">>> saveUserSettings");
+    await SettingsBusiness.saveAsync(userSettings);
+    Toast.show({
+      text: `As configurações foram salvas com sucesso.`,
+      position: appSettings.defaultToastPosition,
+    });
   };
 
   return (

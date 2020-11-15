@@ -15,7 +15,7 @@ const medicineTypes = [
   },
 ];
 
-const settingsStorageTag = "calcLactaseSettings";
+const settingsStorageKey = "calcLactaseSettings";
 
 export default class SettingsBusiness {
   static getAllMedicineTypes() {
@@ -28,10 +28,10 @@ export default class SettingsBusiness {
 
   
   static saveAsync = async (settings) => {
-    await AsyncStorage.setItem(settingsStorageTag, JSON.stringify(settings));
+    await AsyncStorage.setItem(settingsStorageKey, JSON.stringify(settings));
   }
 
   static getAsync = async () => 
-     await AsyncStorage.getItem(settingsStorageTag);
+     await AsyncStorage.getItem(settingsStorageKey);
 
 }
