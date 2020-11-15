@@ -33,8 +33,11 @@ const general = {
     fontWeight: "bold",
     marginTop: 30,
     marginBottom: 15,
-    textAlign: "center",
     flex: 0,
+    textAlign: 'center',
+  },
+  defaultTitleAlignment: {
+    textAlign: 'center',
   },
 };
 

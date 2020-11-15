@@ -1,5 +1,6 @@
 const appSettings = {
-    defaultToastPosition: "bottom",
+    defaultToastPosition: "top",
+    defaultLocale: "pt-BR",
   };
   
   export default appSettings;

@@ -23,8 +23,14 @@ import appSettings from "../../shared/AppSettings";
 export default function Settings(props) {
   console.log(">>> Settings(props)");
   console.log("props.userSettings:", props.userSettings);
-  console.log("props.userSettings.medicineTypeId:", props.userSettings.medicineTypeId);
-  console.log("props.userSettings.medicineFcc:", props.userSettings.medicineFcc);
+  console.log(
+    "props.userSettings.medicineTypeId:",
+    props.userSettings.medicineTypeId
+  );
+  console.log(
+    "props.userSettings.medicineFcc:",
+    props.userSettings.medicineFcc
+  );
 
   getInitialMedicineType = () =>
     props.userSettings

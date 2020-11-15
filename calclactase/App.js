@@ -29,13 +29,14 @@ export default function App() {
   const homeTag = "home";
   const calculatorTag = "calculator";
   const settingsTag = "settings";
+  const medicineType = SettingsBusiness.getMedicineTypeExample();
 
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   const [selectedScreen, setSelectedScreen] = useState(homeTag);
 
   const [products, setProducts] = useState([]);
-  const [calculatorItems, setCalculatorItems] = useState([]);
+  const [calculatorResult, setCalculatorResult] = useState();
 
   const [userSettings, setUserSettings] = useState();
 
@@ -55,21 +56,12 @@ export default function App() {
       setLoadingComplete(true);
     }
 
-    async function recuperaDados() {
-      try {
-        // const t = await AsyncStorage.getItem('tarefas');
-        // if (t !== null) setTarefas(JSON.parse(t));
-      } catch (error) {
-        Alert.alert("As tarefas não foram carregadas");
-      }
-    }
-
     initialize();
-    recuperaDados();
     setProducts(ProductBusiness.getAll());
   }, []);
 
   const addToCalculator = (productId) => {
+    console.log(">>> BEGIN addToCalculator");
     const product = ProductBusiness.getById(productId);
     Toast.show({
       text: `${product.name} adicionado a calculadora.`,
@@ -77,17 +69,33 @@ export default function App() {
     });
 
     CalculatorBusiness.Add(productId);
-    setCalculatorItems([...CalculatorBusiness.getAll()]);
+    setCalculatorResult(
+      CalculatorBusiness.getResult(
+        userSettings.medicineTypeId,
+        userSettings.medicineFcc
+      )
+    );
+    console.log(">>> END addToCalculator");
   };
 
   const addQuantity = (calculatorItemId) => {
     CalculatorBusiness.addQuantity(calculatorItemId);
-    setCalculatorItems([...CalculatorBusiness.getAll()]);
+    setCalculatorResult(
+      CalculatorBusiness.getResult(
+        userSettings.medicineTypeId,
+        userSettings.medicineFcc
+      )
+    );
   };
 
   const removeQuantity = (calculatorItemId) => {
     CalculatorBusiness.removeQuantity(calculatorItemId);
-    setCalculatorItems([...CalculatorBusiness.getAll()]);
+    setCalculatorResult(
+      CalculatorBusiness.getResult(
+        userSettings.medicineTypeId,
+        userSettings.medicineFcc
+      )
+    );
   };
 
   const saveUserSettings = async (userSettings) => {
@@ -109,7 +117,7 @@ export default function App() {
         </Container>
       ) : (
         <Container>
-          <NavBar itemCount={calculatorItems.length} />
+          <NavBar itemCount={0} />
           <Content padder>
             {selectedScreen === homeTag && (
               <Products productList={products} onAdd={addToCalculator} />
@@ -118,7 +126,7 @@ export default function App() {
               <Calculator
                 onAdd={addQuantity}
                 onRemove={removeQuantity}
-                items={calculatorItems}
+                result={calculatorResult}
               />
             )}
             {selectedScreen === settingsTag && (

@@ -18,6 +18,10 @@ const medicineTypes = [
 const settingsStorageKey = "calcLactaseSettings";
 
 export default class SettingsBusiness {
+  static getMedicineTypeExample() {
+    return medicineTypes[0];
+  }
+
   static getAllMedicineTypes() {
     return medicineTypes;
   }
@@ -30,6 +34,22 @@ export default class SettingsBusiness {
     await AsyncStorage.setItem(settingsStorageKey, JSON.stringify(settings));
   };
 
-  static getAsync = async () =>
-    JSON.parse(await AsyncStorage.getItem(settingsStorageKey));
+  static getAsync = async () => {
+    const userSettings = await AsyncStorage.getItem(settingsStorageKey);
+
+    if (userSettings != null) {
+      return JSON.parse(userSettings);
+    }
+
+    return defaultSetting;
+  };
+
+  static defaultSetting = () => {
+    const medicineType = SettingsBusiness.getMedicineTypeExample();
+
+    return {
+      medicineTypeId: medicineType.id,
+      medicineFcc: medicineType.exampleFccValue,
+    };
+  };
 }
