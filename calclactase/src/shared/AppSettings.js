@@ -1,5 +1,5 @@
 const appSettings = {
-    defaultToastPosition: "top",
+    defaultToastPosition: "bottom",
     defaultLocale: "pt-BR",
   };
   

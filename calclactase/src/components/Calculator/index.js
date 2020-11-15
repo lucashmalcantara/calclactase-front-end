@@ -72,7 +72,7 @@ export default function Calculator(props) {
               </CardItem>
             </Card>
           </View>
-          <View>
+          <View style={styles.container}>
             <H2
               style={(styles.defaultTitleAlignment, styles.baseDoubleMarginTop)}
             >

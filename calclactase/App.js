@@ -58,6 +58,9 @@ export default function App() {
 
     initialize();
     setProducts(ProductBusiness.getAll());
+    console.log("Obtendo resultado parcial...");
+    setCalculatorResult(CalculatorBusiness.getResult(undefined, undefined));
+    console.log("Resultado parcial obtido...");
   }, []);
 
   const addToCalculator = (productId) => {
