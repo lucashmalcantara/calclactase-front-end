@@ -22,6 +22,7 @@ import Settings from "./src/components/Settings";
 import { general } from "./src/styles";
 import CalculatorItem from "./src/components/CalculatorItem";
 import * as Font from "expo-font";
+import SettingsBusiness from "./src/business/SettingsBusiness";
 
 export default function App() {
   const homeTag = "home";
@@ -46,10 +47,6 @@ export default function App() {
       setLoadingComplete(true);
     }
 
-    loadResources();
-  }, []);
-
-  useEffect(() => {
     async function recuperaDados() {
       try {
         // const t = await AsyncStorage.getItem('tarefas');
@@ -59,6 +56,7 @@ export default function App() {
       }
     }
 
+    loadResources();
     recuperaDados();
     setProducts(ProductBusiness.getAll());
   }, []);
@@ -84,6 +82,10 @@ export default function App() {
     setCalculatorItems([...CalculatorBusiness.getAll()]);
   };
 
+  const saveUserSettings = (userSettings) => {
+
+  };
+
   return (
     <Root>
       {!isLoadingComplete ? (
@@ -104,7 +106,12 @@ export default function App() {
                 items={calculatorItems}
               />
             )}
-            {selectedScreen === settingsTag && <Settings />}
+            {selectedScreen === settingsTag && (
+              <Settings
+                medicineTypes={SettingsBusiness.getAllMedicineTypes()}
+                onSave={saveUserSettings}
+              />
+            )}
           </Content>
           <Footer>
             <FooterTab>

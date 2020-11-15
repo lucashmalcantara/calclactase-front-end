@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Linking } from "react-native";
 import {
   H1,
@@ -22,6 +22,13 @@ import {
 import styles from "./styles";
 
 export default function Settings(props) {
+  const [selectedMedicineType, setSelectedMedicineType] = useState(undefined);
+
+  onMedicineTypeChange = (medicineTypeId) => {
+    console.log("ID do tipo de medicamento selecionado: ", medicineTypeId);
+    setSelectedMedicineType(medicineTypeId);
+  };
+
   return (
     <React.Fragment>
       <H1 style={styles.largeTitle}>Configurações</H1>
@@ -34,16 +41,17 @@ export default function Settings(props) {
             placeholder="Selecione o tipo de medicamento"
             placeholderStyle={{ color: "#bfc6ea" }}
             placeholderIconColor="#007aff"
-            // selectedValue={this.state.selected2}
-            // onValueChange={this.onValueChange2.bind(this)}
+            selectedValue={selectedMedicineType}
+            onValueChange={onMedicineTypeChange.bind(this)}
           >
-            <Picker.Item label="Comprimido" value="key0" />
-            <Picker.Item label="Gota" value="key1" />
+            {props.medicineTypes.map((m) => (
+              <Picker.Item label={m.name} value={m.id} key={m.id} />
+            ))}
           </Picker>
         </Item>
         <Item floatingLabel>
           <Label>Medida em FCC</Label>
-          <Input />
+          <Input keyboardType="numeric" />
         </Item>
       </Form>
 
