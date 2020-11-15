@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Linking } from "react-native";
+import { StyleSheet, Linking, Keyboard } from "react-native";
 import {
   H1,
   Form,
@@ -20,8 +20,8 @@ import {
   Toast,
 } from "native-base";
 import styles from "./styles";
-import appTexts from '../../shared/AppTexts';
-import appSettings from '../../shared/AppSettings'
+import appTexts from "../../shared/AppTexts";
+import appSettings from "../../shared/AppSettings";
 
 export default function Settings(props) {
   const [medicineTypeId, setMedicineTypeId] = useState(undefined);
@@ -38,9 +38,11 @@ export default function Settings(props) {
   };
 
   onSave = () => {
+    Keyboard.dismiss();
+
     if (medicineFcc === "") {
       Toast.show({
-        text: `Digite um valor para a Medida em FCC`,
+        text: "Digite um valor para a Medida em FCC",
         position: appSettings.defaultToastPosition,
         type: "danger",
         buttonText: appTexts.ok,
@@ -88,6 +90,7 @@ export default function Settings(props) {
           <Input
             keyboardType="numeric"
             onChangeText={(inputText) => onMedicineFccChange(inputText)}
+            onSubmitEditing={onSave}
             value={medicineFcc}
           />
         </Item>
