@@ -41,7 +41,7 @@ export default class SettingsBusiness {
       return JSON.parse(userSettings);
     }
 
-    return defaultSetting;
+    return this.defaultSetting();
   };
 
   static defaultSetting = () => {

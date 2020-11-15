@@ -120,7 +120,7 @@ export default function App() {
         </Container>
       ) : (
         <Container>
-          <NavBar itemCount={0} />
+          <NavBar itemCount={calculatorResult.resultItems.length} />
           <Content padder>
             {selectedScreen === homeTag && (
               <Products productList={products} onAdd={addToCalculator} />
