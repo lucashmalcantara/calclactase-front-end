@@ -37,14 +37,21 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [calculatorItems, setCalculatorItems] = useState([]);
 
+  const [userSettings, setUserSettings] = useState();
+
   useEffect(() => {
-    async function loadResources() {
+    async function initialize() {
       console.log("Recuperando fontes....");
       await Font.loadAsync({
         Roboto: require("native-base/Fonts/Roboto.ttf"),
         Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       });
       console.log("Fontes recuperadas....");
+
+      console.log("Carregando configurações do usuário...");
+      setUserSettings(await SettingsBusiness.getAsync());
+      console.log("Configurações do usuário carregadas com sucesso...");
+
       setLoadingComplete(true);
     }
 
@@ -57,7 +64,7 @@ export default function App() {
       }
     }
 
-    loadResources();
+    initialize();
     recuperaDados();
     setProducts(ProductBusiness.getAll());
   }, []);
@@ -85,7 +92,9 @@ export default function App() {
 
   const saveUserSettings = async (userSettings) => {
     console.log(">>> saveUserSettings");
+    console.log(userSettings);
     await SettingsBusiness.saveAsync(userSettings);
+    setUserSettings(userSettings);
     Toast.show({
       text: `As configurações foram salvas com sucesso.`,
       position: appSettings.defaultToastPosition,
@@ -114,6 +123,7 @@ export default function App() {
             )}
             {selectedScreen === settingsTag && (
               <Settings
+                userSettings={userSettings}
                 medicineTypes={SettingsBusiness.getAllMedicineTypes()}
                 onSave={saveUserSettings}
               />

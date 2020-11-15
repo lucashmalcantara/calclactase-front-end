@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from "react-native";
 
 const medicineTypes = [
   {
@@ -26,12 +26,10 @@ export default class SettingsBusiness {
     return medicineTypes.find((m) => m.id === id);
   }
 
-  
   static saveAsync = async (settings) => {
     await AsyncStorage.setItem(settingsStorageKey, JSON.stringify(settings));
-  }
+  };
 
-  static getAsync = async () => 
-     await AsyncStorage.getItem(settingsStorageKey);
-
+  static getAsync = async () =>
+    JSON.parse(await AsyncStorage.getItem(settingsStorageKey));
 }

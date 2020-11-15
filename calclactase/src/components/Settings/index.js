@@ -11,9 +11,6 @@ import {
   Card,
   CardItem,
   Text,
-  Body,
-  List,
-  ListItem,
   Left,
   Right,
   Button,
@@ -24,8 +21,26 @@ import appTexts from "../../shared/AppTexts";
 import appSettings from "../../shared/AppSettings";
 
 export default function Settings(props) {
-  const [medicineTypeId, setMedicineTypeId] = useState(undefined);
-  const [medicineFcc, setMedicineFcc] = useState("");
+  console.log(">>> Settings(props)");
+  console.log("props.userSettings:", props.userSettings);
+  console.log("props.userSettings.medicineTypeId:", props.userSettings.medicineTypeId);
+  console.log("props.userSettings.medicineFcc:", props.userSettings.medicineFcc);
+
+  getInitialMedicineType = () =>
+    props.userSettings
+      ? props.userSettings.medicineTypeId
+      : props.medicineTypes[0].id;
+
+  getInitialMedicineFcc = () =>
+    props.userSettings
+      ? props.userSettings.medicineFcc.toString()
+      : props.medicineTypes[0].medicineFcc.toString();
+
+  const [medicineTypeId, setMedicineTypeId] = useState(
+    getInitialMedicineType()
+  );
+
+  const [medicineFcc, setMedicineFcc] = useState(getInitialMedicineFcc());
 
   onMedicineTypeChange = (medicineTypeId) => {
     console.log("ID do tipo de medicamento selecionado: ", medicineTypeId);
