@@ -109,4 +109,8 @@ export default class ProductBusiness {
   static getById(id) {
     return products.find((p) => p.id === id);
   }
+
+  static async getByIdAsync(id) {
+    return products.find((p) => p.id === id);
+  }
 }

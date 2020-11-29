@@ -6,8 +6,8 @@ let items = [];
 const FccAmountToHydrolyzeAGramOfLactose = 300;
 
 export default class CalculatorBusiness {
-  static getResult = (medicineTypeId, medicineFcc) => {
-    console.log(">>> BEGIN getResult");
+  static getResultAsync = async (medicineTypeId, medicineFcc) => {
+    console.log(">>> BEGIN getResultAsync");
     const result = {
       resultItems: [],
       lactaseSum: 0,
@@ -26,7 +26,7 @@ export default class CalculatorBusiness {
       medicineFcc
     );
     result.medicineDisplayName = this.getMedicineDisplayName(medicineTypeId, result.necessaryMedicineAmount);
-    console.log(">>> END getResult");
+    console.log(">>> END getResultAsync");
     return result;
   };
 

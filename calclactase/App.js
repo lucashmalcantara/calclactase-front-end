@@ -53,19 +53,21 @@ export default function App() {
       setUserSettings(await SettingsBusiness.getAsync());
       console.log("Configurações do usuário carregadas com sucesso...");
 
+      console.log("Obtendo resultado parcial...");
+      setCalculatorResult(await CalculatorBusiness.getResultAsync(undefined, undefined));
+      console.log("Resultado parcial obtido...");
+
       setLoadingComplete(true);
     }
 
     initialize();
     setProducts(ProductBusiness.getAll());
-    console.log("Obtendo resultado parcial...");
-    setCalculatorResult(CalculatorBusiness.getResult(undefined, undefined));
-    console.log("Resultado parcial obtido...");
+
   }, []);
 
-  const addToCalculator = (productId) => {
+  const addToCalculatorAsync = async (productId) => {
     console.log(">>> BEGIN addToCalculator");
-    const product = ProductBusiness.getById(productId);
+    const product = await ProductBusiness.getByIdAsync(productId);
     Toast.show({
       text: `${product.name} adicionado a calculadora.`,
       position: appSettings.defaultToastPosition,
@@ -73,7 +75,7 @@ export default function App() {
 
     CalculatorBusiness.Add(productId);
     setCalculatorResult(
-      CalculatorBusiness.getResult(
+      await CalculatorBusiness.getResultAsync(
         userSettings.medicineTypeId,
         userSettings.medicineFcc
       )
@@ -81,20 +83,20 @@ export default function App() {
     console.log(">>> END addToCalculator");
   };
 
-  const addQuantity = (calculatorItemId) => {
+  const addQuantityAsync = async (calculatorItemId) => {
     CalculatorBusiness.addQuantity(calculatorItemId);
     setCalculatorResult(
-      CalculatorBusiness.getResult(
+      await CalculatorBusiness.getResultAsync(
         userSettings.medicineTypeId,
         userSettings.medicineFcc
       )
     );
   };
 
-  const removeQuantity = (calculatorItemId) => {
+  const removeQuantityAsync = async (calculatorItemId) => {
     CalculatorBusiness.removeQuantity(calculatorItemId);
     setCalculatorResult(
-      CalculatorBusiness.getResult(
+      await CalculatorBusiness.getResultAsync(
         userSettings.medicineTypeId,
         userSettings.medicineFcc
       )
@@ -123,12 +125,12 @@ export default function App() {
           <NavBar itemCount={calculatorResult.resultItems.length} />
           <Content padder>
             {selectedScreen === homeTag && (
-              <Products productList={products} onAdd={addToCalculator} />
+              <Products productList={products} onAdd={addToCalculatorAsync} />
             )}
             {selectedScreen === calculatorTag && (
               <Calculator
-                onAdd={addQuantity}
-                onRemove={removeQuantity}
+                onAdd={addQuantityAsync}
+                onRemove={removeQuantityAsync}
                 result={calculatorResult}
               />
             )}
