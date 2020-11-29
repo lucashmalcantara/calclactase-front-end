@@ -103,33 +103,6 @@ export default class CalculatorBusiness {
       resultItems.push(resultItem);
     }
 
-    // const resultItems = await Promise.all(
-    //   items.map(async (item) => {
-    //     const product = await ProductBusiness.getByIdAsync(item.productId);
-
-    //     const resultItem = {
-    //       itemId: item.id,
-    //       productId: product.id,
-    //       productName: product.name,
-    //       finalUnitValue: product.displayUnitValue * item.quantity,
-    //       displayUnit: product.displayUnit,
-    //       imageUrl: product.imageUrl,
-    //       quantity: item.quantity,
-    //       lactoseValue: this.calcLactoseValue(
-    //         item.quantity,
-    //         product.grams,
-    //         product.percentageOfLactose
-    //       ),
-    //     };
-
-    //     return resultItem;
-    //   })
-    // );
-
-    // console.log("Depois do await Promise.all: ", resultItems);
-
-    // resultItems.push(resultItem);
-    // return resultItems;
     return resultItems;
   };
 
