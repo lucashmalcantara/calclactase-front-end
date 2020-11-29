@@ -2,14 +2,11 @@ import React, { useState, useEffect } from "react";
 import {
   Root,
   Container,
-  Header,
   Content,
   Footer,
   FooterTab,
   Button,
-  Icon,
   Toast,
-  Text,
   Spinner,
 } from "native-base";
 import { StyleSheet } from "react-native";
@@ -19,18 +16,16 @@ import ProductBusiness from "./src/business/ProductBusiness";
 import CalculatorBusiness from "./src/business/CalculatorBusiness";
 import Calculator from "./src/components/Calculator";
 import Settings from "./src/components/Settings";
-import { general } from "./src/styles";
-import CalculatorItem from "./src/components/CalculatorItem";
+import { colors, general, metrics } from "./src/styles";
 import * as Font from "expo-font";
 import SettingsBusiness from "./src/business/SettingsBusiness";
 import appSettings from "./src/shared/AppSettings";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function App() {
   const homeTag = "home";
   const calculatorTag = "calculator";
   const settingsTag = "settings";
-  const medicineType = SettingsBusiness.getMedicineTypeExample();
-
   const [isLoadingComplete, setLoadingComplete] = useState(false);
 
   const [selectedScreen, setSelectedScreen] = useState(homeTag);
@@ -56,15 +51,15 @@ export default function App() {
       console.log("Configurações do usuário carregadas com sucesso...");
 
       console.log("Obtendo resultado parcial...");
-      setCalculatorResult(await CalculatorBusiness.getResultAsync(undefined, undefined));
+      setCalculatorResult(
+        await CalculatorBusiness.getResultAsync(undefined, undefined)
+      );
       console.log("Resultado parcial obtido...");
-
 
       setLoadingComplete(true);
     }
 
     initialize();
-
   }, []);
 
   const addToCalculatorAsync = async (productId) => {
@@ -156,30 +151,30 @@ export default function App() {
                 active={selectedScreen === homeTag}
                 onPress={() => setSelectedScreen(homeTag)}
               >
-                <Icon
-                  active={selectedScreen === homeTag}
-                  type="FontAwesome"
+                <FontAwesome5
                   name="home"
+                  size={metrics.bottomNavBarIconHeight}
+                  color={selectedScreen === homeTag ? "white" : colors.softGray}
                 />
               </Button>
               <Button
                 active={selectedScreen === calculatorTag}
                 onPress={() => setSelectedScreen(calculatorTag)}
               >
-                <Icon
-                  active={selectedScreen === calculatorTag}
-                  type="FontAwesome"
+                <FontAwesome5
                   name="calculator"
+                  size={metrics.bottomNavBarIconHeight}
+                  color={selectedScreen === calculatorTag ? "white" : colors.softGray}
                 />
               </Button>
               <Button
                 active={selectedScreen === settingsTag}
                 onPress={() => setSelectedScreen(settingsTag)}
               >
-                <Icon
-                  active={selectedScreen === settingsTag}
-                  type="FontAwesome"
+                <FontAwesome5
                   name="cog"
+                  size={metrics.bottomNavBarIconHeight}
+                  color={selectedScreen === settingsTag ? "white" : colors.softGray}
                 />
               </Button>
             </FooterTab>

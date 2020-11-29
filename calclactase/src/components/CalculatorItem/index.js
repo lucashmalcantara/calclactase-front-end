@@ -1,16 +1,8 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Image } from "react-native";
-import {
-  ListItem,
-  Button,
-  Icon,
-  Text,
-  Input,
-  Content,
-  Label,
-  Item,
-} from "native-base";
+import { ListItem, Button, Text, Input, Item } from "native-base";
 import styles from "./styles";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function CalculatorItem(props) {
   return (
@@ -22,9 +14,16 @@ export default function CalculatorItem(props) {
         </Text>
       </View>
       <View style={{ flexDirection: "column", alignItems: "center" }}>
-        <Image style={styles.tinyProductImage} source={{uri: props.imageUrl}} />
+        <Image
+          style={styles.tinyProductImage}
+          source={{ uri: props.imageUrl }}
+        />
         <Item>
-          <Input disabled={true} value={props.quantity.toString()} style={styles.quantityInput} />
+          <Input
+            disabled={true}
+            value={props.quantity.toString()}
+            style={styles.quantityInput}
+          />
         </Item>
 
         <View style={{ flexDirection: "row" }}>
@@ -34,7 +33,7 @@ export default function CalculatorItem(props) {
             style={styles.button}
             onPress={() => props.onRemove(props.id)}
           >
-            <Icon name="remove" />
+            <FontAwesome5 name="minus" color="white" />
           </Button>
           <Button
             small
@@ -42,7 +41,7 @@ export default function CalculatorItem(props) {
             style={styles.button}
             onPress={() => props.onAdd(props.id)}
           >
-            <Icon name="add" />
+            <FontAwesome5 name="plus" color="white" />
           </Button>
         </View>
       </View>

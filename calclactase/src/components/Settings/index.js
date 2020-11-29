@@ -7,7 +7,6 @@ import {
   Picker,
   Label,
   Input,
-  Icon,
   Card,
   CardItem,
   Text,
@@ -19,6 +18,7 @@ import {
 import styles from "./styles";
 import appTexts from "../../shared/AppTexts";
 import appSettings from "../../shared/AppSettings";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function Settings(props) {
   console.log(">>> Settings(props)");
@@ -93,7 +93,7 @@ export default function Settings(props) {
         <Item picker>
           <Picker
             mode="dropdown"
-            iosIcon={<Icon name="arrow-down" />}
+            iosIcon={<FontAwesome5 name="caret-down" />}
             style={{ width: undefined }}
             placeholder="Selecione o tipo de medicamento"
             placeholderStyle={{ color: "#bfc6ea" }}
@@ -134,7 +134,7 @@ export default function Settings(props) {
             <Text>Lacday: comprimidos de 10.000 FCC</Text>
           </Left>
           <Right>
-            <Icon name="arrow-forward" />
+            <FontAwesome5 name="chevron-right" />
           </Right>
         </CardItem>
         <CardItem
@@ -147,7 +147,7 @@ export default function Settings(props) {
             <Text>LacLev: comprimidos de 9.000 FCC</Text>
           </Left>
           <Right>
-            <Icon name="arrow-forward" />
+            <FontAwesome5 name="chevron-right" />
           </Right>
         </CardItem>
         <CardItem
@@ -158,7 +158,7 @@ export default function Settings(props) {
             <Text>Lactosil: comprimidos de 10.000 FCC</Text>
           </Left>
           <Right>
-            <Icon name="arrow-forward" />
+            <FontAwesome5 name="chevron-right" />
           </Right>
         </CardItem>
         <CardItem
@@ -173,7 +173,7 @@ export default function Settings(props) {
             <Text>Deslac Lactase: gotas de 500 FCC</Text>
           </Left>
           <Right>
-            <Icon name="arrow-forward" />
+            <FontAwesome5 name="chevron-right" />
           </Right>
         </CardItem>
       </Card>

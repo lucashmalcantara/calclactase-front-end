@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   button: {
     marginLeft: 5,
     marginTop: 16,
+    width: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
   tinyProductImage: {
     height: 70,
