@@ -49,6 +49,8 @@ export default function App() {
       });
       console.log("Fontes recuperadas....");
 
+      setProducts(await ProductBusiness.getAllAsync());
+
       console.log("Carregando configurações do usuário...");
       setUserSettings(await SettingsBusiness.getAsync());
       console.log("Configurações do usuário carregadas com sucesso...");
@@ -57,11 +59,11 @@ export default function App() {
       setCalculatorResult(await CalculatorBusiness.getResultAsync(undefined, undefined));
       console.log("Resultado parcial obtido...");
 
+
       setLoadingComplete(true);
     }
 
     initialize();
-    setProducts(ProductBusiness.getAll());
 
   }, []);
 
