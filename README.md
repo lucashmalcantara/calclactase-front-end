@@ -14,10 +14,6 @@ O grande problema é que é muito difícil o paciente estimar quanto medicamento
 
 Nesta tela o usuário poderá selecionar produtos derivados do leite para compor a lista de produtos que serão usados na Calculadora de Lactase.
 
-<p align="center">CalcLactase - Tela Principal</p>
-<p align="center">
-  <img src="https://i.imgur.com/kviqOKv.jpg"  width="350" title="CalcLactase - Tela Principal">
-</p>
 
 ## Tela Calculadora de Lactose
 
@@ -25,41 +21,11 @@ Nesta tela o usuário encontrará os produtos selecionados na tela principal. Um
 
 Na parte inferior ta tela o usuário encontrará o resultado do principal cálculo do sistema. As informações calculadas são: (1) a soma da quantidade de lactose de todos os produtos da lista, (2) a quantidade de lactase necessária para hidrolisar essa quantidade de lactose e (3) uma estimativa de quanto medicamento ingerir.
 
-<p align="center">CalcLactase - Tela Calculadora de Lactose</p>
-<p align="center">
-  <img src="https://i.imgur.com/buWzdLn.jpg"  width="350" title="CalcLactase - Tela Calculadora de Lactose">
-</p>
-
-
 ## Tela Configurações
 
 Nesta tela o usuário poderá definir as preferências de tipo de medicamento que costuma usar (comprimidos ou gotas) e a quantidade de FCC do medicamento.
 
 Para ajudar o usuário, o sistema apresenta alguns exemplos de medicamentos disponíveis no mercado.
-
-<p align="center">CalcLactase - Tela Configurações de Lactose</p>
-<p align="center">
-  <img src="https://i.imgur.com/8EUhdHD.jpg"  width="350" title="CalcLactase - Tela Configurações">
-</p>
-
-# DADOS DO USUÁRIO
-
-Nesta aplicação, os dados do usuário que são armazenados são:
-
-1. Informações de medicamento: tipo de medicamento (comprimidos ou gotas) e a quantidade de FCC do medicamento. Os dados são salvos através da API `localStorage`. 
-2. A sacola de produtos: a lista dos produtos lácteos adicionados à sacola. Esses dados são armazenados através da API `sessionStorage`, pois não é necessário armazenar essa lista de forma permanente.
-
-
-# CHECKLIST DE IMPLEMENTAÇÃO
-
-- A aplicação é original e não uma cópia da aplicação de um colega ou de uma aplicação já existente? **Sim.**
-- A aplicação tem pelo menos duas interfaces (telas ou páginas) independentes? **Sim.**
-- A aplicação armazena e usa de forma relevante dados complexos do usuário? **Sim.**
-- A aplicação possui um manifesto para instalação no dispositivo do usuário? **Sim.**
-- A aplicação possui um _service worker_ que permite o funcionamento off-line? **Sim.**
-- O código da minha aplicação possui comentários explicando cada operação? **Não, pois não é uma boa prática de programação.** Todavia, todos os métodos, variáveis e arquivos foram criados com nomes extremamente sugestivos para simplificar o entendimento do código. Por exemplo, o método `addToCalculator` adiciona um produto à sacola; o método `showCartItens` exibe os itens da sacola; já o método `showCalcLactaseResult` exibe o resultado do cálculo. Viu?! Simples assim! Desta forma o código fica mais elegante e muito mais legível.
-- A aplicação está funcionando corretamente? **Sim.**
-- A aplicação está completa? **Sim.**
 
 
 # DEFINIÇÕES
