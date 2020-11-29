@@ -131,7 +131,7 @@ export default function Settings(props) {
           onPress={() => Linking.openURL("http://lacday.com.br/")}
         >
           <Left>
-            <Text>Lacday: comprimidos de 10.000</Text>
+            <Text>Lacday: comprimidos de 10.000 FCC</Text>
           </Left>
           <Right>
             <Icon name="arrow-forward" />
@@ -155,7 +155,7 @@ export default function Settings(props) {
           onPress={() => Linking.openURL("https://www.apsen.com.br/lactosil/")}
         >
           <Left>
-            <Text>Lactosil: comprimidos de 10.000</Text>
+            <Text>Lactosil: comprimidos de 10.000 FCC</Text>
           </Left>
           <Right>
             <Icon name="arrow-forward" />
