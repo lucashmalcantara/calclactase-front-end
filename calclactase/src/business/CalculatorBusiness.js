@@ -18,7 +18,7 @@ export default class CalculatorBusiness {
 
     if (items.length === 0 || !medicineTypeId || !medicineFcc) return result;
 
-    result.resultItems = this.getResultItems();
+    result.resultItems = await this.getResultItemsAsync();
     result.lactaseSum = this.getLactoseSum(result.resultItems);
     result.necessaryFcc = this.getNecessaryFcc(result.lactaseSum);
     result.necessaryMedicineAmount = this.calcNecessaryMedicineAmount(
@@ -74,13 +74,13 @@ export default class CalculatorBusiness {
   static getNecessaryFcc = (gramsOfLactose) =>
     gramsOfLactose * FccAmountToHydrolyzeAGramOfLactose;
 
-  static getResultItems = () => {
+  static getResultItemsAsync = async () => {
     console.log(">>> getResultItems");
 
     const resultItems = [];
 
-    items.map((item) => {
-      const product = ProductBusiness.getById(item.productId);
+    items.forEach(async (item) => {
+      const product = await ProductBusiness.getByIdAsync(item.productId);
 
       const resultItem = {
         itemId: item.id,
