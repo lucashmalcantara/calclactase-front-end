@@ -45,7 +45,8 @@ export default function Calculator(props) {
                 </Left>
                 <Right>
                   <Text>
-                    {props.result.lactaseSum.toFixed(2).toLocaleString()}{" FCC"}
+                    {props.result.lactaseSum.toFixed(2).toLocaleString()}
+                    {" g"}
                   </Text>
                 </Right>
               </CardItem>
@@ -55,7 +56,8 @@ export default function Calculator(props) {
                 </Left>
                 <Right>
                   <Text>
-                    {props.result.necessaryFcc.toFixed(2).toLocaleString()} {" g"}
+                    {props.result.necessaryFcc.toFixed(2).toLocaleString()}{" "}
+                    {" FCC"}
                   </Text>
                 </Right>
               </CardItem>
@@ -74,7 +76,7 @@ export default function Calculator(props) {
           </View>
           <View style={styles.container}>
             <H2
-              style={(styles.defaultTitleAlignment, styles.baseDoubleMarginTop)}
+              style={[styles.defaultTitleAlignment, styles.baseDoubleMarginTop]}
             >
               Itens da calculadora
             </H2>
@@ -84,7 +86,7 @@ export default function Calculator(props) {
                   key={item.itemId}
                   id={item.itemId}
                   name={item.productName}
-                  finalUnitValue={item.finalUnitValue}
+                  displayUnitValue={item.finalUnitValue}
                   displayUnit={item.displayUnit}
                   quantity={item.quantity}
                   imageUrl={item.imageUrl}
