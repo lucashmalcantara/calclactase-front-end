@@ -25,7 +25,10 @@ export default class CalculatorBusiness {
       result.necessaryFcc,
       medicineFcc
     );
-    result.medicineDisplayName = this.getMedicineDisplayName(medicineTypeId, result.necessaryMedicineAmount);
+    result.medicineDisplayName = this.getMedicineDisplayName(
+      medicineTypeId,
+      result.necessaryMedicineAmount
+    );
     console.log(">>> END getResultAsync");
     return result;
   };
@@ -79,27 +82,54 @@ export default class CalculatorBusiness {
 
     const resultItems = [];
 
-    items.forEach(async (item) => {
-      const product = await ProductBusiness.getByIdAsync(item.productId);
+    for (var i = 0; i < items.length; i++) {
+      const product = await ProductBusiness.getByIdAsync(items[i].productId);
 
       const resultItem = {
-        itemId: item.id,
+        itemId: items[i].id,
         productId: product.id,
         productName: product.name,
-        finalUnitValue: product.displayUnitValue * item.quantity,
+        finalUnitValue: product.displayUnitValue * items[i].quantity,
         displayUnit: product.displayUnit,
         imageUrl: product.imageUrl,
-        quantity: item.quantity,
+        quantity: items[i].quantity,
         lactoseValue: this.calcLactoseValue(
-          item.quantity,
+          items[i].quantity,
           product.grams,
           product.percentageOfLactose
         ),
       };
 
       resultItems.push(resultItem);
-    });
+    }
 
+    // const resultItems = await Promise.all(
+    //   items.map(async (item) => {
+    //     const product = await ProductBusiness.getByIdAsync(item.productId);
+
+    //     const resultItem = {
+    //       itemId: item.id,
+    //       productId: product.id,
+    //       productName: product.name,
+    //       finalUnitValue: product.displayUnitValue * item.quantity,
+    //       displayUnit: product.displayUnit,
+    //       imageUrl: product.imageUrl,
+    //       quantity: item.quantity,
+    //       lactoseValue: this.calcLactoseValue(
+    //         item.quantity,
+    //         product.grams,
+    //         product.percentageOfLactose
+    //       ),
+    //     };
+
+    //     return resultItem;
+    //   })
+    // );
+
+    // console.log("Depois do await Promise.all: ", resultItems);
+
+    // resultItems.push(resultItem);
+    // return resultItems;
     return resultItems;
   };
 

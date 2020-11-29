@@ -22,7 +22,7 @@ export default function CalculatorItem(props) {
         </Text>
       </View>
       <View style={{ flexDirection: "column", alignItems: "center" }}>
-        <Image style={styles.tinyProductImage} source={props.imageUrl} />
+        <Image style={styles.tinyProductImage} source={{uri: props.imageUrl}} />
         <Item>
           <Input disabled={true} value={props.quantity.toString()} style={styles.quantityInput} />
         </Item>
