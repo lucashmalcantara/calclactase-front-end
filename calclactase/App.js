@@ -154,7 +154,11 @@ export default function App() {
                 <FontAwesome5
                   name="home"
                   size={metrics.bottomNavBarIconHeight}
-                  color={selectedScreen === homeTag ? "white" : colors.softGray}
+                  color={
+                    selectedScreen === homeTag
+                      ? colors.selectedTabIcon
+                      : colors.notSelectedTabIcon
+                  }
                 />
               </Button>
               <Button
@@ -164,7 +168,11 @@ export default function App() {
                 <FontAwesome5
                   name="calculator"
                   size={metrics.bottomNavBarIconHeight}
-                  color={selectedScreen === calculatorTag ? "white" : colors.softGray}
+                  color={
+                    selectedScreen === calculatorTag
+                      ? colors.selectedTabIcon
+                      : colors.notSelectedTabIcon
+                  }
                 />
               </Button>
               <Button
@@ -174,7 +182,11 @@ export default function App() {
                 <FontAwesome5
                   name="cog"
                   size={metrics.bottomNavBarIconHeight}
-                  color={selectedScreen === settingsTag ? "white" : colors.softGray}
+                  color={
+                    selectedScreen === settingsTag
+                      ? colors.selectedTabIcon
+                      : colors.notSelectedTabIcon
+                  }
                 />
               </Button>
             </FooterTab>
