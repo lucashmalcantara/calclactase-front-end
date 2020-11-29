@@ -110,6 +110,12 @@ export default function App() {
     console.log(userSettings);
     await SettingsBusiness.saveAsync(userSettings);
     setUserSettings(userSettings);
+    setCalculatorResult(
+      await CalculatorBusiness.getResultAsync(
+        userSettings.medicineTypeId,
+        userSettings.medicineFcc
+      )
+    );
     Toast.show({
       text: `As configurações foram salvas com sucesso.`,
       position: appSettings.defaultToastPosition,
